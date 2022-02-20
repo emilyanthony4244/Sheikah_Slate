@@ -30,7 +30,7 @@
 <br />
 <div align="center">
    
-    <img src="https://i.etsystatic.com/14675880/r/il/ea402a/2162910604/il_794xN.2162910604_d0df.jpg" alt="Logo" width="80" height="80">
+<img src="https://i.etsystatic.com/14675880/r/il/ea402a/2162910604/il_794xN.2162910604_d0df.jpg" alt="Logo" width="80" height="80">
 
   <h3 align="center">Sheikah Slate Cosplay Project</h3>
 
@@ -81,14 +81,17 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+In November 2021 I decided to tackle my next cosplay build – Nintendo’s Zelda Breath of the Wild’s Link, specifically his Royal Guardsman armor from the Champions Ballad DLC.
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Sewing aside, the biggest part of the project proved to be the Sheikah slate. Initially I considered making a “dummy” prop, maybe with lights, but after doing some research I started down the Adafruit rabbit hole (thanks @ladyada) and opted to integrate a 7inch TFT touch screen, a small camera, a noisemaker, and various light sources.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+This piece packages an Arduino-based Microcontroller from Adafruit with various modules and a custom main control board to perform the following functions: 
+* Light up orange and blue pieces along parts of the body
+* Generate a “chirping” sound to mimic a Sheikah Sensor
+* Take basic photographs and display them on screen
+* Simulate the “sleep” image, the sheikah logo shown above, when not in use
+* Provide basic menus for information and as a digital resume for the costume
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
