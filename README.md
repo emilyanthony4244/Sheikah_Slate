@@ -217,9 +217,9 @@ Use this space to list resources you find helpful and would like to give credit 
 [contributors-url]: https://github.com/emilyanthony4244/Sheikah_Slate/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/emilyanthony4244/Sheikah_Slate.svg?style=for-the-badge
 [forks-url]: https://github.com/emilyanthony4244/Sheikah_Slate/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/emilyanthony4244/Sheikah_Slate.svg?style=for-the-badge
 [stars-url]: https://github.com/emilyanthony4244/Sheikah_Slate/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ emilyanthony4244/Sheikah_Slate.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/emilyanthony4244/Sheikah_Slate.svg?style=for-the-badge
 [issues-url]: https://github.com/emilyanthony4244/Sheikah_Slate/issues
 [license-shield]: https://img.shields.io/github/license/ emilyanthony4244/Sheikah_Slate.svg?style=for-the-badge
 [license-url]: https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/LICENSE
