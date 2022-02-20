@@ -1,0 +1,48 @@
+Number,Item,Manufacturer,PN,Qty, Unit Cost , Total Cost ,
+1,99461A941 Thread Forming Screw,MCMASTER,99461A941,7, $0.15 , $1.04 ,
+2,3.7V Battery,Adafruit,5035,1, $29.95 , $29.95 ,
+3,Adafruit TTL mini camera,Adafruit,1386,1, $35.95 , $35.95 ,
+4,Assembled PCB,PCBWAY,,1, $59.84 , $59.84 ,
+5,Back Body,FDM 3DP,,1, $50.00 , $50.00 ,
+6,"Bottom Left Blue LED 
+Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+7,"Bottom Middle Blue 
+LED Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+8,"Bottom Right Blue LED 
+Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+9,Bottom Right Disk,FDM 3DP,,1, $5.00 , $5.00 ,
+10,Eyelash Orange LED1,SLA 3DP,,1, $5.00 , $5.00 ,
+11,Eyelash Orange LED2,SLA 3DP,,1, $5.00 , $5.00 ,
+12,Eyelash Orange LED3,SLA 3DP,,1, $5.00 , $5.00 ,
+13,Feather M0 Adalogger,Adafruit,in PCB,0, $-   , $-   ,
+14,Front Body,SLA 3DP,,1, $50.00 , $50.00 ,
+15,Handle Tube,SLA 3DP,,1, $20.00 , $20.00 ,
+16,TFT DISPLAY - 800X480 WITH TOUCH,Adafruit,2354,1, $47.50 , $47.50 ,
+17,HLMP-QB00-S0000 Blue LED,Broadcom,HLMP-QB00-S0000,5, $1.25 , $6.25 ,
+18,"Inner Neopixel Ring 
+Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+19,Left Orange LED Panel,SLA 3DP,,1, $5.00 , $5.00 ,
+20,NeoPixelRing16,Adafruit,1463,1, $9.95 , $9.95 ,
+21,"Outer Neopixel Ring 
+Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+22,"Right Orange LED 
+Panel",SLA 3DP,,1, $10.00 , $10.00 ,
+23,SLR-343DC3F Orange LED,rohm,SLR-343DC3F,8, $0.28 , $2.24 ,
+24,"Top Left Blue LED 
+Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+25,Top Left Disk,SLA 3DP,,1, $5.00 , $5.00 ,
+26,"Top Right Blue LED 
+Holder",SLA 3DP,,1, $5.00 , $5.00 ,
+27,Wire Red 24 GA,digikey,,1, $5.00 , $5.00 ,
+28,Wire Black 24 GA,digikey,,1, $5.00 , $5.00 ,
+29,Wire White 24 GA,digikey,,1, $5.00 , $5.00 ,
+30,Wire Green 24 GA,digikey,,1, $5.00 , $5.00 ,
+31,Wire Yellow 24 GA,digikey,,1, $5.00 , $5.00 ,
+32,Wire Orange 24 GA,digikey,,1, $5.00 , $5.00 ,
+33,Wire Purple 24 GA,digikey,,1, $5.00 , $5.00 ,
+34,Speaker,Adafruit,1898,1, $1.85 , $1.85 ,
+35,NeoPixel Jewel,Adafruit,2226,1, $5.95 , $5.95 ,
+36,EL Panel,Adafruit,625,1, $13.95 , $13.95 ,
+37,EL Panel Inverter,CoolLight,CL-IPTC-9v-3-7FT,1, $6.25 , $6.25 ,
+,,,,,,,
+,,,,, Total , $450.72 ,
