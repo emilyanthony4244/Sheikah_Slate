@@ -1,0 +1,25 @@
+#,PN,Value,Manufacturer,Quantity,RefDes,Description
+1,90310,1000uF,NTE,1,C1,
+2,VHT-100M50,100uF,NTE,1,C2,
+3,VHT-100M50,100uF,NTE,2,"C3, C4",
+4,A102J15C0GF5UAAP,1nF,Vishay,1,C5,
+5,8.60161E+11,10uF,WURTH,2,"C6, C8",
+6,TVA1161,250uF,VISHAY,1,C7,
+7,1N5819G,,ON Semiconductor,1,D1,
+8,640453-4,,TE Connectivity,2,"J1, J3",
+9,1-640453-5,,TE Connectivity,1,J2,
+10,640453-3,,TE Connectivity,1,J4,
+11,PPTC021LFBN-RC,,Sullins,2,"J5, J6",
+12,,10K,Vishay,2,"R1, R2",
+13,,170,Vishay,10,"R3, R4, R5, R6, R7, R8, R9, R10, R11, R12",
+14,,1,Vishay,6,"R13, R14, R15, R16, R17, R18",
+15,,180,Vishay,1,R19,
+16,,0.22,TE,1,R20,
+17,,6.2K,TE,1,R21,
+18,,1K,TE,1,R22,
+19,T93YA103KT20,,,1,R23,    Trimmer Potentiometer   Turn 
+20,,10,Vishay,1,R24,
+21,2796,ADALOGGER M0,ADAFRUIT,1,U1,
+22,SN74HC125N,,TI,1,U2,
+23,LM386N-1/NOPB,,TI,1,U3,Audio Amp Speaker 1-CH Mono 0.325W Class-AB 8-Pin VSSOP T/R
+24,MC34063ACN,,STM,1,U4,"Buck, Boost Switching Regulator IC Positive or Negative Adjustable 1.25V 1 Output 1.5A (Switch) 8-DIP (0.300 , 7.62mm)"
