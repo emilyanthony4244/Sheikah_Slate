@@ -2,10 +2,10 @@
 
 ## Renders
 
-<img src="RENDER1 BOARD.png" alt="Top Render">
+<img src="RENDER1 BOARD.PNG" alt="Top Render">
 Top Render. Note: Capacitors may not be rendered correctly. Some components are missing.
 
-<img src="RENDER2 BOARD.png" alt="Bottom Render">
+<img src="RENDER2 BOARD.PNG" alt="Bottom Render">
 Bottom Render.
 
 ## Basic Information
@@ -14,7 +14,7 @@ Bottom Render.
 
 Designed in Diptrace, referencing several helpful guides, which I’ve included in the <a href=”##References”>References</a> section.
 
-<img src="Bare Board Top.png" alt="Top Bare Board" width=”50%”><img src="Bare Board Bottom.png" alt="Top Bare Board" width=”50%”>
+<img src="Bare Board Top.PNG" alt="Top Bare Board" width=”50%”><img src="Bare Board Bottom.PNG" alt="Top Bare Board" width=”50%”>
 
 ##Schematics
 
