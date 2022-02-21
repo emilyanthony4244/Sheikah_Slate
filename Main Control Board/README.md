@@ -14,7 +14,7 @@ Bottom Render.
 
 Designed in Diptrace, referencing several helpful guides, which I’ve included in the <a href=”##References”>References</a> section.
 
-<img src="Bare Board Top.PNG" alt="Top Bare Board" width=”200”> <img src="Bare Board Bottom.PNG" alt="Top Bare Board" width=”200”>
+<img src="Bare Board Top.PNG" alt="Top Bare Board" width="40%"> <img src="Bare Board Bottom.PNG" alt="Top Bare Board" width="40%"> 
 
 
 ## Schematics
