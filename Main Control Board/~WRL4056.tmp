@@ -14,16 +14,14 @@ Bottom Render.
 
 Designed in Diptrace, referencing several helpful guides, which I’ve included in the <a href=”##References”>References</a> section.
 
-<img src="Bare Board Top.PNG" alt="Top Bare Board" width=”30%”> <img src="Bare Board Bottom.PNG" alt="Top Bare Board" width=”30%”>
+<img src="Bare Board Top.PNG" alt="Top Bare Board" width=”40%”><img src="Bare Board Bottom.PNG" alt="Top Bare Board" width=”40%”>
+
+##Schematics
+
+To Be Uploaded
 
 
-## Schematics
-
-<img src="SCHEMATICS.PNG" alt="SCHEMATICS">
-
-
-## References
-
+##References
 * [Adafruit Feather Adalogger M0 Guide]( https://learn.adafruit.com/adafruit-feather-m0-adalogger/overview)
 * [Adafruit Neopixel Uberguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)
 * [Adafruit TTL Serial Camera Guide](https://learn.adafruit.com/ttl-serial-camera)
