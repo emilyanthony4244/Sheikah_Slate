@@ -116,25 +116,27 @@ Building your own Sheikah Slate requires approximately $450, access to a 3D prin
 
 ### Materials
 
-Soldering Iron, a computer capable of running the Arduino IDE, glue, Philips head screwdriver, double sided tape
+Soldering Iron, a computer capable of running the Arduino IDE, glue, Philips head screwdriver, double sided tape.
 
-<p align=”center”>AND</p>
+<p align="center">AND</p>
 
-FDM 3D printer capable of printing clear and solid color PLA filament with a minimum build volume of 275mm x 175mm x 25mm
+FDM 3D printer capable of printing clear and solid color PLA filament with a minimum build volume of 275mm x 175mm x 25mm.
 
-<p align=”center”>OR</p>
+<p align="center">OR</p>
 
-FDM 3D printer capable of printing solid PLA/ABS/PETG/etc AND an SLA printer capable of printing clear UV resin. I use an Anycubic Photon Mono X
+FDM 3D printer capable of printing solid PLA/ABS/PETG/etc AND an SLA printer capable of printing clear UV resin. I use an Anycubic Photon Mono X for SLA prints and a Creality CR10s Pro V2 for FDM prints.
 
-<p align=”center”>OR</p>
+<p align="center">OR</p>
 
-Money to spend at www.HUBS.com or www.shapeways.com to outsource prints
+Money to spend at www.HUBS.com or www.shapeways.com to outsource prints.
 
-See the BOM in root directory for parts information.
+See the BOM in root directory for parts information. 3D print costs are estimates and will be higher if you outsource this print. PCBs can be ordered at various online vendors such as PCBway.com. It’s recommended to shop around to get your best price. PCBway has a minimum order of 5 boards per order; I have extras and can sell you one for $12 + shipping.
 
 ### Installation
 
-Under Construction
+To Use the Adafruit Adalogger M0 board in the Arduino IDE, you’ll need to follow the guide linked here: https://learn.adafruit.com/adafruit-feather-m0-adalogger/using-with-arduino-ide.
+
+All the necessary libraries “should” be in the Arduino folder above. Drop these in your local Arduino libraries folder for use.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -154,7 +156,7 @@ Placeholder for menu items and features
 
 - [x] Add Readme
 - [x] Add back to top links
-- [ ] Add Installation instructions with links to Adafruit libraries
+- [x] Add Installation instructions
 - [ ] Add Arduino Firmware
 - [ ] Add Menu Images in Usage Section
 - [ ] Film Demo and take pretty photos
