@@ -42,7 +42,7 @@
     <br />
     <a href=" ">Demo Placeholder Link</a>
     ·
-<img src="Assets/Front render.png" alt="Logo" width="50%">
+<img src="Assets/Front render.png" alt="front render" width="50%">
 
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
