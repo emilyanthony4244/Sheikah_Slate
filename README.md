@@ -37,7 +37,7 @@
   <p align="center">
     A functional, open source Sheikah Slate for cosplay or collectors.
 <br />
-    <a href="https://github.com/emilyanthony4244/Shiekah_Slate"><strong>Explore the slate »</strong></a>
+    <a href="https://github.com/emilyanthony4244/Sheikah_Slate"><strong>Explore the slate »</strong></a>
 <br />
 <img src="Assets/rear render.png" alt="rear render" width="50%">
 
