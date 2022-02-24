@@ -1,11 +1,14 @@
 # Main Control Board
 
+Please review open issues regarding the main control board prior to ordering PCBs.
+
 ## Renders
 
-<img src="RENDER1 BOARD.PNG" alt="Top Render">
+<img src="RENDER1 BOARD.PNG" alt="Top Render" width="75%" align="center">
+
 Top Render. Note: Capacitors may not be rendered correctly. Some components are missing.
 
-<img src="RENDER2 BOARD.PNG" alt="Bottom Render">
+<img src="RENDER2 BOARD.PNG" alt="Bottom Render" width="75%" align="center">
 Bottom Render.
 
 ## Basic Information
@@ -28,8 +31,8 @@ Designed in Diptrace, referencing several helpful guides, which I’ve included in
 * [Adafruit Neopixel Uberguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels)
 * [Adafruit TTL Serial Camera Guide](https://learn.adafruit.com/ttl-serial-camera)
 * [Adafruit RA8875 Touch Display Driver Board Guide](https://learn.adafruit.com/ra8875-touch-display-driver-board)
-* [Adafruit Forums for 74HC125 tri-state buffer chip]( https://forums.adafruit.com/viewtopic.php?f=47&t=60533&start=45#p323058)
-* [Simple Audio Player – Arduino Forums]( https://docs.arduino.cc/tutorials/generic/simple-audio-player)
+* [Adafruit Forums for 74HC125 tri-state buffer chip]( https://forums.adafruit.com/viewtopic.php?f=47&t=60533&start=60#p323604)
+* [Arduino Audio Music Player – Circuit Digest]( https://circuitdigest.com/microcontroller-projects/arduino-audio-music-player)
 
 
 <!-- CONTACT -->
