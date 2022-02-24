@@ -39,12 +39,13 @@
     <br />
     <a href="https://github.com/emilyanthony4244/Shiekah_Slate"><strong>Explore the slate »</strong></a>
     <br />
-    <br />
-    <a href=" ">Demo Placeholder Link</a>
-    <br />
-    <br />
 <img src="Assets/rear render.png" alt="rear render" width="50%">
 
+
+    <br />
+    
+<a href=" ">Demo Placeholder Link</a>
+    <br />
 
 <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
 
