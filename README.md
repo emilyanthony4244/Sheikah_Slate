@@ -45,7 +45,7 @@
     <br />
     
 <a href=" ">Demo Placeholder Link</a>
-    <br />
+<br />
 
 <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
 
