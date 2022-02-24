@@ -42,6 +42,8 @@
     <br />
     <a href=" ">Demo Placeholder Link</a>
     ·
+<img src="Assets/Front render.PNG" alt="Logo" width="50%">
+
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
