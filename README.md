@@ -89,13 +89,24 @@
 In November 2021 I decided to tackle my next cosplay build – Nintendo’s Zelda Breath of the Wild’s Link, specifically his Royal Guardsman armor from the Champions Ballad DLC.
 
 Sewing aside, the biggest part of the project proved to be the Sheikah slate. Initially I considered making a “dummy” prop, maybe with lights, but after doing some research I started down the Adafruit rabbit hole (thanks @ladyada) and opted to integrate a 7inch TFT touch screen, a small camera, a noisemaker, and various light sources.
-
-This piece packages an Arduino-based Microcontroller from Adafruit with various modules and a custom main control board to perform the following functions: 
+A prototype was built with the following specifications and functions:
+* ESP32 based microcontroller integrated with a custom PCB
 * Light up orange and blue pieces along parts of the body
 * Generate a “chirping” sound to mimic a Sheikah Sensor
-* Take basic photographs and display them on screen
 * Simulate the “sleep” image, the sheikah logo shown above, when not in use
-* Provide basic menus for information and as a digital resume for the costume
+* Display basic menus for information 
+
+Prototype Photos:
+
+However, the prototype had a LONG way to go… so I went back to the drawing board and rolled up a V2.0. Improvements:
+* On-board SD card integration to delete the SD shield
+* Shrunk the board considerably (check out the photos!)
+* Moved from DAC audio to a proper IIS solution
+* Deleted all the bulb LEDs, moved to addressable everything for color coordination
+* Integration of a TTL camera
+* Board updates for noise shielding
+* Proper GUI built using <a href=" https://github.com/ImpulseAdventure/GUIslice/wiki/GUIslice-Builder">
+GUISlice Builder</a>
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -139,7 +150,7 @@ See the BOM in root directory for parts information. 3D print costs are estimate
 
 ### Installation
 
-To Use the Adafruit Adalogger M0 board in the Arduino IDE, you’ll need to follow the guide linked here: https://learn.adafruit.com/adafruit-feather-m0-adalogger/using-with-arduino-ide.
+To Use the Adafruit Feather ESP32 v2 board in the Arduino IDE, you’ll need to follow the guide linked here: https://learn.adafruit.com/adafruit-esp32-feather-v2
 
 All the necessary libraries “should” be in the Arduino folder above. Drop these in your local Arduino libraries folder for use.
 

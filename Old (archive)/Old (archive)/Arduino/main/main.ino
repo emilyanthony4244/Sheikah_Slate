@@ -26,7 +26,7 @@ Adafruit_VC0706 cam = Adafruit_VC0706(&cameraconnection);
 #define LED_COUNT       23          // 16 on ring + 7 on jewel = 23
 #define DELAYVAL        100         // Time (in milliseconds) to pause between pixels, dropped from 500 from adafruit examples//RGB values for orange and blue LEDS  
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
-uint32_t orange = strip.Color(117, 62, 26);
+uint32_t orange = strip.Color(121, 62, 26);
 uint32_t blue = strip.Color(26, 117, 116);
 
 //screen global variables

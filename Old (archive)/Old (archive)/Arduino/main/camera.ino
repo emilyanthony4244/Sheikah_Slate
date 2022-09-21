@@ -33,9 +33,9 @@ void takepic(){
   // Read all the data up to # bytes!
   byte wCount = 0; // For counting # of writes
   while (jpglen > 0) {
-    // read 32 bytes at a time;
+    // read 64 bytes at a time;
     uint8_t *buffer;
-    uint8_t bytesToRead = min((uint16_t)32, jpglen); // change 32 to 64 for a speedup but may not work with all setups!
+    uint8_t bytesToRead = min((uint16_t)64, jpglen); // changed 32 to 64 for a speedup; needs testing
     buffer = cam.readPicture(bytesToRead);
     imgFile.write(buffer, bytesToRead);
     if(++wCount >= 64) { // Every 2K, give a little feedback so it doesn't appear locked up
