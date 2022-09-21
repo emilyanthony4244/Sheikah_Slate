@@ -1,3 +1,9 @@
+#if defined(ARDUINO_SAMD_ZERO) && defined(SERIAL_PORT_USBVIRTUAL)
+  // Required for Serial on Zero based boards
+  #define Serial SERIAL_PORT_USBVIRTUAL
+#endif
+
+
 //included libraries
 #include <BufferedPrint.h>
 #include <FreeStack.h>
@@ -37,8 +43,17 @@ uint32_t blue = strip.Color(26, 117, 116);
 Adafruit_RA8875 tft = Adafruit_RA8875(RA8875_CS, RA8875_RESET);
 
 
-// SD chip select pin
+// SD
 #define YOUR_SD_CS 4
+  // Try to select the best SD card configuration.
+#if HAS_SDIO_CLASS
+#define SD_CONFIG SdioConfig(FIFO_SDIO)
+#elif ENABLE_DEDICATED_SPI
+#define SD_CONFIG SdSpiConfig(YOUR_SD_CS, DEDICATED_SPI, SD_SCK_MHZ(16))
+#else  // HAS_SDIO_CLASS
+#define SD_CONFIG SdSpiConfig(YOUR_SD_CS, SHARED_SPI, SD_SCK_MHZ(16))
+#endif  // HAS_SDIO_CLASS
+static ArduinoOutStream cout(Serial);
 
 //speaker global variables
 #define NUM_AUDIO_CHANNELS 1                //could be 1,2 or 4 for sound
@@ -63,7 +78,13 @@ void bmpDraw(const char *filename, int x, int y);
 
 void setup() {
   // put your setup code here, to run once:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
 
+    Serial.println("Hello World");
+  
 //Pinmodes
   pinMode(10, OUTPUT); //neopixels
   pinMode(9, INPUT); //RA8875 interrupt pin
@@ -75,15 +96,30 @@ void setup() {
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
 
-//Initialize serial for startup
-  Serial.begin(9600);
-  if (!SD.begin(YOUR_SD_CS))
-  {
-    Serial.println("initialization failed!");
+
+  uint32_t t = millis();
+  if (!SD.cardBegin(SD_CONFIG)) {
+    cout << F(
+           "\nSD initialization failed.\n"
+           "Do not reformat the card!\n"
+           "Is the card correctly inserted?\n"
+           "Is there a wiring/soldering problem?\n");
+    if (isSpi(SD_CONFIG)) {
+      cout << F(
+           "Is SD_CS_PIN set to the correct value?\n"
+           "Does another SPI device need to be disabled?\n"
+           );
+    }
+  if (SD.sdErrorCode()) {
+    cout << F("SD errorCode: ") << hex << showbase;
+    printSdErrorSymbol(&Serial, SD.sdErrorCode());
+    cout << F(" = ") << int(SD.sdErrorCode()) << endl;
+    cout << F("SD errorData = ") << int(SD.sdErrorData()) << endl;
+  }
     return;
   }
 
-  Serial.println("initialization done.");  Serial.println("RA8875 start");
+  Serial.println("SD initialization done.");  Serial.println("RA8875 start");
 
   /* Initialize the display using 'RA8875_480x80', 'RA8875_480x128', 'RA8875_480x272' or 'RA8875_800x480' */
   if (!tft.begin(RA8875_800x480)) {
