@@ -37,7 +37,7 @@
   <p align="center">
     A functional, open source Sheikah Slate for cosplay or collectors.
 <br />
-    <a href="https://github.com/emilyanthony4244/Sheikah_Slate"><strong>Explore the slate ª</strong></a>
+    <a href="https://github.com/emilyanthony4244/Sheikah_Slate"><strong>Explore the slate ¬ª</strong></a>
 <br />
 <img src="Assets/rear render.png" alt="rear render" width="50%">
 
@@ -86,19 +86,23 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-In November 2021 I decided to tackle my next cosplay build ñ Nintendoís Zelda Breath of the Wildís Link, specifically his Royal Guardsman armor from the Champions Ballad DLC.
+In November 2021 I decided to tackle my next cosplay build ‚Äì Nintendo‚Äôs Zelda Breath of the Wild‚Äôs Link, specifically his Royal Guardsman armor from the Champions Ballad DLC.
 
-Sewing aside, the biggest part of the project proved to be the Sheikah slate. Initially I considered making a ìdummyî prop, maybe with lights, but after doing some research I started down the Adafruit rabbit hole (thanks @ladyada) and opted to integrate a 7inch TFT touch screen, a small camera, a noisemaker, and various light sources.
+Sewing aside, the biggest part of the project proved to be the Sheikah slate. Initially I considered making a ‚Äúdummy‚Äù prop, maybe with lights, but after doing some research I started down the Adafruit rabbit hole (thanks @ladyada) and opted to integrate a 7inch TFT touch screen, a small camera, a noisemaker, and various light sources.
 A prototype was built with the following specifications and functions:
 * ESP32 based microcontroller integrated with a custom PCB
 * Light up orange and blue pieces along parts of the body
-* Generate a ìchirpingî sound to mimic a Sheikah Sensor
-* Simulate the ìsleepî image, the sheikah logo shown above, when not in use
+* Generate a ‚Äúchirping‚Äù sound to mimic a Sheikah Sensor
+* Simulate the ‚Äúsleep‚Äù image, the sheikah logo shown above, when not in use
 * Display basic menus for information 
 
 Prototype Photos:
+<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/296172815_10220211113417289_6492841646193638318_n.jpg" width"50%" align="center">
 
-However, the prototype had a LONG way to goÖ so I went back to the drawing board and rolled up a V2.0. Improvements:
+<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/297153859_10220211113337287_6166251877348932006_n.jpg?" width"50%" align="center">
+
+
+However, the prototype had a LONG way to go‚Ä¶ so I went back to the drawing board and rolled up a V2.0. Improvements:
 * On-board SD card integration to delete the SD shield
 * Shrunk the board considerably (check out the photos!)
 * Moved from DAC audio to a proper IIS solution
@@ -108,6 +112,10 @@ However, the prototype had a LONG way to goÖ so I went back to the drawing board
 * Proper GUI built using <a href=" https://github.com/ImpulseAdventure/GUIslice/wiki/GUIslice-Builder">
 GUISlice Builder</a>
 
+V1 vs V2 board size:
+
+
+<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/20220824_190129.jpg" width"50%" align="center">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -146,13 +154,13 @@ FDM 3D printer capable of printing solid PLA/ABS/PETG/etc AND an SLA printer cap
 
 Money to spend at www.HUBS.com or www.shapeways.com to outsource prints.
 
-See the BOM in root directory for parts information. 3D print costs are estimates and will be higher if you outsource this print. PCBs can be ordered at various online vendors such as PCBway.com. Itís recommended to shop around to get your best price. PCBway has a minimum order of 5 boards per order; I have extras and can sell you one for $12 + shipping.
+See the BOM in root directory for parts information. 3D print costs are estimates and will be higher if you outsource this print. PCBs can be ordered at various online vendors such as PCBway.com. It‚Äôs recommended to shop around to get your best price. PCBway has a minimum order of 5 boards per order; I have extras and can sell you one for $12 + shipping.
 
 ### Installation
 
-To Use the Adafruit Feather ESP32 v2 board in the Arduino IDE, youíll need to follow the guide linked here: https://learn.adafruit.com/adafruit-esp32-feather-v2
+To Use the Adafruit Feather ESP32 v2 board in the Arduino IDE, you‚Äôll need to follow the guide linked here: https://learn.adafruit.com/adafruit-esp32-feather-v2
 
-All the necessary libraries ìshouldî be in the Arduino folder above. Drop these in your local Arduino libraries folder for use.
+All the necessary libraries ‚Äúshould‚Äù be in the Arduino folder above. Drop these in your local Arduino libraries folder for use.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -224,7 +232,7 @@ Project Link: [https://github.com/emilyanthony4244/Sheikah_Slate](https://github
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-* [OthNealDrewís Readme template]( https://github.com/othneildrew/Best-README-Template)
+* [OthNealDrew‚Äôs Readme template]( https://github.com/othneildrew/Best-README-Template)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
