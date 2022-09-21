@@ -97,9 +97,11 @@ A prototype was built with the following specifications and functions:
 * Display basic menus for information 
 
 Prototype Photos:
-<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/296172815_10220211113417289_6492841646193638318_n.jpg" width"50%" align="center">
 
-<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/297153859_10220211113337287_6166251877348932006_n.jpg?" width"50%" align="center">
+
+<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/296172815_10220211113417289_6492841646193638318_n.jpg" width"200" align="center">
+
+<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/297153859_10220211113337287_6166251877348932006_n.jpg?" width"200" align="center">
 
 
 However, the prototype had a LONG way to go… so I went back to the drawing board and rolled up a V2.0. Improvements:
@@ -115,7 +117,7 @@ GUISlice Builder</a>
 V1 vs V2 board size:
 
 
-<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/20220824_190129.jpg" width"50%" align="center">
+<img src="https://github.com/emilyanthony4244/Sheikah_Slate/blob/main/Assets/20220824_190129.jpg" width"200" align="center">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
