@@ -1,5 +1,5 @@
 //<App !Start!>
-// FILE: [GUIsliceBuilder.ino]
+// FILE: [GUIslice Builder.ino]
 // Created by GUIslice Builder version: [0.17.b12]
 //
 // GUIslice Builder Generated File
@@ -12,7 +12,7 @@
 // ------------------------------------------------
 // Headers to include
 // ------------------------------------------------
-#include "GUIsliceBuilder_GSLC.h"
+#include "GUIslice Builder_GSLC.h"
 
 
 // ------------------------------------------------

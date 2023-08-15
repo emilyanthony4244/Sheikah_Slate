@@ -4,7 +4,6 @@
 
 #include <Adafruit_NeoPixel.h>
 
-#include <sheikah_tft_config.h>
 #include <GUIslice.h>
 #include <GUIslice_drv.h>
 

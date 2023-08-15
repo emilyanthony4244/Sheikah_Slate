@@ -32,10 +32,10 @@
 // Note that font files are located within the Adafruit-GFX library folder:
 // ------------------------------------------------
 //<Fonts !Start!>
-#if !defined(DRV_DISP_TFT_ESPI)
-  #error E_PROJECT_OPTIONS tab->Graphics Library should be Adafruit_GFX
+#if defined(DRV_DISP_TFT_ESPI)
+  #error E_PROJECT_OPTIONS tab->Graphics Library should be TFT_eSPI
 #endif
-#include <TFT_eSPI.h>
+#include <Adafruit_GFX.h>
 #include "dosis_bold8pt7b.h"
 //<Fonts !End!>
 

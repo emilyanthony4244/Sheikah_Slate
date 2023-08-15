@@ -191,7 +191,7 @@ extern "C" {
 
   // Define buffer size for loading images from SD
   // - A larger buffer will be faster but at the cost of RAM
-  #define GSLC_SD_BUFFPIXEL   84
+  #define GSLC_SD_BUFFPIXEL   250
 
   // Enable support for graphics clipping (DrvSetClipRect)
   // - Note that this will impact performance of drawing graphics primitives

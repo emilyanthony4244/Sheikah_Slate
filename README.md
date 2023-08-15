@@ -238,9 +238,9 @@ SD enabled for obvious reasons:
 
 Pixel Buffer increased because I’m impatient
 
-<code>  #define GSLC_SD_BUFFPIXEL   250</code>
+<code>  #define GSLC_SD_BUFFPIXEL   85</code>
 
-<i>A note: this pixel buffer is 8 bit. Even though the ESP32 can handle it, the display will not work if you increase this past 254.</i>
+<i>A note: this pixel buffer is by default 8 bit. Even though the ESP32 can handle it, the display will not work if you increase this past 85 due to the way the SD library reads files. I may write a buffer for the buffer to send to the screen in larger chunks. TBD</i>
 
 ### Camera
 
