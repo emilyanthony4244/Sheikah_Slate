@@ -198,38 +198,34 @@ Did I need to use a 6 pin dip switch here? No, but I had one already so it do be
 
 In firmware, the SD CS is set to pin 27.
 
-###TFT Setup 
+### TFT Setup 
 
-An example config file was used as a base and modified. This was renamed to sheikah_tft_config.h and included at the top of sheikahslate.ino. This can also be called in GUIslice_config.h. The following items were modified from the base config:
+An example config file was used as a base and modified. This was renamed to sheikah_tft_config.h and included at the top of sheikahslate.ino. This can also be called in GUIslice_config.h.
 
+Unfortunately the RA8875 is not compatible with TFT_eSPI from @Bodmer, so the AdafruitGFX and RA8875 libraries must be used.
+The following items were modified from the base config:
 
+<code>  #define ADAGFX_PIN_CS       25    // Display chip select changed from 10 to 25
+  #define ADAGFX_PIN_RST      20     // Display Reset changed from 5 to 27
+#define ADAGFX_PIN_SDCS     27    //SD CS</code>
 
-<code>#define DRV_DISP_ADAGFX_RA8875    // Adafruit RA8875
-  #define DRV_TOUCH_ADA_RA8875      // Integrated RA8875 touch driver
+For development, <code>#define DEBUG_ERR</code> was changed to 2. For release this will toggle to 0.
 
-  // Select the RA8875 display resolution:
-  // - RA8875_480x272 = 480x272 (4.3" display)
-  // - RA8875_800x480 = 800x480 (5" and 7" displays)
-  #define DRV_DISP_ADAGFX_RA8875_INIT RA8875_800x480 
+All optional features toggled to 1 for development; likely won’t need GPIO input in the end but who knows.
 
-// -----------------------------------------------------------------------------
-  // SECTION 2: Pinout
-  // -----------------------------------------------------------------------------
+<code>  #define GSLC_FEATURE_COMPOUND       1   // Compound elements (eg. XSelNum)
+  #define GSLC_FEATURE_XTEXTBOX_EMBED 1   // XTextbox control with embedded color
+  #define GSLC_FEATURE_INPUT          1   // Keyboard / GPIO input control</code>
 
-  // For shields, the following pinouts are typically hardcoded
-  #define ADAGFX_PIN_CS       25    // Display chip select //changed from 10 default
-  #define ADAGFX_PIN_RST      20     // Display Reset //changed from 5 default
-</code>
+SD enabled for obvious reasons:
 
-Change Section 2 Pinout:
+<code>#define GSLC_SD_EN    1</code>
 
-<code>// SD Card
-  //#define ADAGFX_PIN_SDCS    2 // ESP8266 + Adafruit FeatherWing 2.4"
-  #define ADAGFX_PIN_SDCS     27 // ESP32   + Adafruit FeatherWing 2.4"	//changed from 15 default
-  //#define ADAGFX_PIN_SDCS    5 // Others  + Adafruit FeatherWing 2.4"
-</code>
+Pixel Buffer increased because I’m impatient
 
+<code>  #define GSLC_SD_BUFFPIXEL   250</code>
 
+<i>A note: this pixel buffer is 8 bit. Even though the ESP32 can handle it, the display will not work if you increase this past 254.</i>
 
 ### Camera
 
@@ -238,6 +234,10 @@ The Sheikah Slate features the Adafruit Miniature TTL Serial JPG camera. The cam
 Using the TJpg_Decoder library (also from @Bodmer), the jpgs are processed and resaved as 24bit BMP files and then displayed on the TFT. Jpeg files must be in 24bit format (8 bit not supported); luckily, the Adafruit TTL Serial Camera takes 24bit depth jpg images so it’s an easy conversion.
 
 The Sheikah Slate does not and will never support streamed video to the display. Sorry.
+
+### Audio
+
+TODO
 
 ### NeoPixels
 
