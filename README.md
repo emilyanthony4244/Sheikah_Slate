@@ -169,7 +169,7 @@ All the necessary libraries “should” be in the Arduino folder above. Drop th
 
 The Sheikah Slate combines the Adafruit RA8875 TFT driver board and Adafruit 7in 800x480 resistive touch TFT screen to simulate the in-game sheikah slate interface. The menus were created with GUIslice Builder (linked above) using the Adafruit GFX library. The SS V2 uses an ESP32 Pico microcontroller from Adafruit: the ESP32 Feather V2.
 
-###SD Implementation
+### SD Implementation
 
 A SD card slot is provided on the board. This is a cloned circuit of the Adafruit MicroSD SPI or SDIO Breakout Board. The mode is selected using the dip switches at S1 and in firmware.
 
@@ -203,8 +203,8 @@ In firmware, the SD CS is set to pin 27.
 An example config file was used as a base and modified. This was renamed to sheikah_tft_config.h and included at the top of sheikahslate.ino. This can also be called in GUIslice_config.h. The following items were modified from the base config:
 
 
-<code>
-  #define DRV_DISP_ADAGFX_RA8875    // Adafruit RA8875
+
+<code>#define DRV_DISP_ADAGFX_RA8875    // Adafruit RA8875
   #define DRV_TOUCH_ADA_RA8875      // Integrated RA8875 touch driver
 
   // Select the RA8875 display resolution:
@@ -212,7 +212,7 @@ An example config file was used as a base and modified. This was renamed to shei
   // - RA8875_800x480 = 800x480 (5" and 7" displays)
   #define DRV_DISP_ADAGFX_RA8875_INIT RA8875_800x480 
 
-  // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
   // SECTION 2: Pinout
   // -----------------------------------------------------------------------------
 
@@ -222,8 +222,8 @@ An example config file was used as a base and modified. This was renamed to shei
 </code>
 
 Change Section 2 Pinout:
-<code>
-  // SD Card
+
+<code>// SD Card
   //#define ADAGFX_PIN_SDCS    2 // ESP8266 + Adafruit FeatherWing 2.4"
   #define ADAGFX_PIN_SDCS     27 // ESP32   + Adafruit FeatherWing 2.4"	//changed from 15 default
   //#define ADAGFX_PIN_SDCS    5 // Others  + Adafruit FeatherWing 2.4"
