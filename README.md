@@ -246,7 +246,9 @@ Pixel Buffer increased because I’m impatient
 
 The Sheikah Slate features the Adafruit Miniature TTL Serial JPG camera. The camera captures 640x480 images and saves them to the SD in jpg format using the Adafruit VC0706 Camera library. The file names are formatted “IMAGExx.JPG” from 00 to 99.
 
-Using the TJpg_Decoder library (also from @Bodmer), the jpgs are processed and resaved as 24bit BMP files and then displayed on the TFT. Jpeg files must be in 24bit format (8 bit not supported); luckily, the Adafruit TTL Serial Camera takes 24bit depth jpg images so it’s an easy conversion.
+When the Camera menu is selected, the 
+
+Using the TJpg_Decoder library (also from @Bodmer), the jpgs are processed and resaved as 24bit BMP files and then displayed on the TFT. Jpeg files must be in 24bit format; luckily, the Adafruit TTL Serial Camera takes 24bit depth jpg images so it’s an easy conversion.
 
 The Sheikah Slate does not and will never support streamed video to the display. Sorry.
 
@@ -429,8 +431,13 @@ Finally, the slate has 11 button NeoPixels, a 16 pixel Ring, a Flora, and a 20 L
         </tbody>
     </table>
 
+### A note regarding memory, core usage, etc
 
+The libraries required for this project built with an entirely empty sketch took uses about 0.3MB of flash memory. Be wise about adding screens with the GUISlice Builder and store all images on the SD. Don’t try to be sly and write to FLASH.
 
+Currently I am not fiddling with the default core assignments in the Arduino IDE for the ESP32. I am considering offloading the SD buffer to LCD Buffer to core 1 as well as the jpg to bmp file conversion. I’d love to use both cores of the ESP32, but just one can do everything I’d like it to do.
+
+TJpg_Decoder has an example where it renders a Jpeg file that is stored in an array within Flash memory. The Jpeg decoding is done by one processor core 0 and the rendering to TFT by processor 1. I may be able to reformat this to use the 2MB of PSRAM available.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
