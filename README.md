@@ -176,33 +176,33 @@ A SD card slot is provided on the board. This is a cloned circuit of the Adafrui
 To select SPI mode:
 
 
-1	ON	Serial Out SD to MCU
+	1	ON	Serial Out SD to MCU
 
-2	ON	Serial In MCU to SD
+	2	ON	Serial In MCU to SD
 
-3	ON	SD CS (technically this position doesn’t matter, it’s all connected in the copper on the board [on accident])
+	3	ON	SD CS (technically this position doesn’t matter, it’s all connected in the copper on the board [on accident])
 
-4	OFF	
+	4	OFF	
 
-5	OFF
+	5	OFF
 
-6	ON	DET	Toggle this OFF to disconnect the SD from the sense pin
+	6	ON	DET	Toggle this OFF to disconnect the SD from the sense pin
 
 
 	
 And SDIO:
 
-1	ON	D0
+	1	ON	D0
 
-2	ON	CMD bidirectional communications MCU <-> SD
+	2	ON	CMD bidirectional communications MCU <-> SD
 
-3	ON	D3
+	3	ON	D3
 
-4	ON	D1	
+	4	ON	D1	
 
-5	ON	DAT2
+	5	ON	DAT2
 
-6	ON	DET	
+	6	ON	DET	
 
 
 I was worried the R/W speeds would be insufficient on SPI while sharing the bus with the RA8875 MCU, so I added this switch to allow to switch modes for testing.
