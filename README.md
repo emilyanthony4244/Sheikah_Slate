@@ -174,12 +174,14 @@ The Sheikah Slate combines the Adafruit RA8875 TFT driver board and Adafruit 7in
 A SD card slot is provided on the board. This is a cloned circuit of the Adafruit MicroSD SPI or SDIO Breakout Board. The mode is selected using the dip switches at S1 and in firmware.
 
 To select SPI mode:
+
 1	ON	Serial Out SD to MCU
 2	ON	Serial In MCU to SD
 3	ON	SD CS (technically this position doesn’t matter, it’s all connected in the copper on the board [on accident])
 4	OFF	
 5	OFF
 6	ON	DET	Toggle this OFF to disconnect the SD from the sense pin
+
 	
 And SDIO:
 
