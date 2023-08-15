@@ -1,4 +1,4 @@
-<div id="top"></div>
+﻿<div id="top"></div>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -111,7 +111,7 @@ However, the prototype had a LONG way to go… so I went back to the drawing boa
 * Deleted all the bulb LEDs, moved to addressable everything for color coordination
 * Integration of a TTL camera
 * Board updates for noise shielding
-* Proper GUI built using <a href=" https://github.com/ImpulseAdventure/GUIslice/wiki/GUIslice-Builder">
+* Proper GUI built using <a href=" https://github.com/ImpulseAdventure/GUIslice/wiki">
 GUISlice Builder</a>
 
 V1 vs V2 board size:
@@ -132,8 +132,6 @@ V1 vs V2 board size:
 * [DipTrace Schematic Capture](https://diptrace.com/diptrace-software/pcb-layout/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -162,9 +160,258 @@ See the BOM in root directory for parts information. 3D print costs are estimate
 
 To Use the Adafruit Feather ESP32 v2 board in the Arduino IDE, you’ll need to follow the guide linked here: https://learn.adafruit.com/adafruit-esp32-feather-v2
 
-All the necessary libraries “should” be in the Arduino folder above. Drop these in your local Arduino libraries folder for use.
+All the necessary libraries “should” be in the Arduino folder above. Drop these in your local Arduino libraries folder for use. Open the SheikahSlate.ino file, select your board, and upload. If this doesn’t work, toss the library files in your default Arduino Libraries folder. Make sure you don’t have any conflicts in names or versions.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- HOW IT WORKS -->
+## How it works
+
+The Sheikah Slate combines the Adafruit RA8875 TFT driver board and Adafruit 7in 800x480 resistive touch TFT screen to simulate the in-game sheikah slate interface. The menus were created with GUIslice Builder (linked above) using the Adafruit GFX library. The SS V2 uses an ESP32 Pico microcontroller from Adafruit: the ESP32 Feather V2.
+
+###SD Implementation
+
+A SD card slot is provided on the board. This is a cloned circuit of the Adafruit MicroSD SPI or SDIO Breakout Board. The mode is selected using the dip switches at S1 and in firmware.
+
+To select SPI mode:
+1	ON	Serial Out SD to MCU
+2	ON	Serial In MCU to SD
+3	ON	SD CS (technically this position doesn’t matter, it’s all connected in the copper on the board [on accident])
+4	OFF	
+5	OFF
+6	ON	DET	Toggle this OFF to disconnect the SD from the sense pin
+	
+And SDIO:
+
+1	ON	D0
+2	ON	CMD bidirectional communications MCU <-> SD
+3	ON	D3
+4	ON	D1	
+5	ON	DAT2
+6	ON	DET	
+
+I was worried the R/W speeds would be insufficient on SPI while sharing the bus with the RA8875 MCU, so I added this switch to allow to switch modes for testing.
+
+Did I need to use a 6 pin dip switch here? No, but I had one already so it do be like that sometimes. Plus, who knows what neat troubleshooting steps you can take with this circuit broken out with the switches. Not me, I’m an idiot.
+
+<i> A note: RA8875 uses SPI mode 3 and SD uses SPI mode 0, so they are not compatible in the same SPI bus without isolation. Plus, SDIO is faster, so it’s a “nice to have”. If you want to DIY and use SDIO, no need to populate that buffer on U2. </i>
+
+In firmware, the SD CS is set to pin 27.
+
+###TFT Setup 
+
+An example config file was used as a base and modified. This was renamed to sheikah_tft_config.h and included at the top of sheikahslate.ino. This can also be called in GUIslice_config.h. The following items were modified from the base config:
+
+
+<code>
+  #define DRV_DISP_ADAGFX_RA8875    // Adafruit RA8875
+  #define DRV_TOUCH_ADA_RA8875      // Integrated RA8875 touch driver
+
+  // Select the RA8875 display resolution:
+  // - RA8875_480x272 = 480x272 (4.3" display)
+  // - RA8875_800x480 = 800x480 (5" and 7" displays)
+  #define DRV_DISP_ADAGFX_RA8875_INIT RA8875_800x480 </code>
+
+  // -----------------------------------------------------------------------------
+  // SECTION 2: Pinout
+  // -----------------------------------------------------------------------------
+
+  // For shields, the following pinouts are typically hardcoded
+  #define ADAGFX_PIN_CS       25    // Display chip select //changed from 10 default
+  #define ADAGFX_PIN_RST      20     // Display Reset //changed from 5 default
+
+Change Section 2 Pinout:
+<code>
+  // SD Card
+  //#define ADAGFX_PIN_SDCS    2 // ESP8266 + Adafruit FeatherWing 2.4"
+  #define ADAGFX_PIN_SDCS     27 // ESP32   + Adafruit FeatherWing 2.4"	//changed from 15 default
+  //#define ADAGFX_PIN_SDCS    5 // Others  + Adafruit FeatherWing 2.4"
+</code>
+
+
+
+### Camera
+
+The Sheikah Slate features the Adafruit Miniature TTL Serial JPG camera. The camera captures 640x480 images and saves them to the SD in jpg format using the Adafruit VC0706 Camera library. The file names are formatted “IMAGExx.JPG” from 00 to 99.
+
+Using the TJpg_Decoder library (also from @Bodmer), the jpgs are processed and resaved as 24bit BMP files and then displayed on the TFT. Jpeg files must be in 24bit format (8 bit not supported); luckily, the Adafruit TTL Serial Camera takes 24bit depth jpg images so it’s an easy conversion.
+
+The Sheikah Slate does not and will never support streamed video to the display. Sorry.
+
+### NeoPixels
+
+Finally, the slate has 11 button NeoPixels, a 16 pixel Ring, a Flora, and a 20 LED strip all from Adafruit. They’re all strung together and addressed on A0/IO26. The order of the NeoPixels is as follows:
+
+<table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+        <colgroup><col class="col0">
+        <col class="col1">
+        <col class="col2">
+        <col class="col3">
+        <col class="col4">
+        <col class="col5">
+        <col class="col6">
+        <col class="col7">
+        <col class="col8">
+        <col class="col9">
+        <col class="col10">
+        <col class="col11">
+        <col class="col12">
+        <col class="col13">
+        <col class="col14">
+        <col class="col15">
+        <col class="col16">
+        <col class="col17">
+        <col class="col18">
+        <col class="col19">
+        <col class="col20">
+        <col class="col21">
+        <col class="col22">
+        <col class="col23">
+        <col class="col24">
+        <col class="col25">
+        <col class="col26">
+        <col class="col27">
+        <col class="col28">
+        <col class="col29">
+        <col class="col30">
+        <col class="col31">
+        <col class="col32">
+        <col class="col33">
+        <col class="col34">
+        <col class="col35">
+        <col class="col36">
+        <col class="col37">
+        <col class="col38">
+        <col class="col39">
+        <col class="col40">
+        <col class="col41">
+        <col class="col42">
+        <col class="col43">
+        <col class="col44">
+        <col class="col45">
+        <col class="col46">
+        <col class="col47">
+        <col class="col48">
+        <col class="col49">
+        <col class="col50">
+        <col class="col51">
+        <col class="col52">
+        <col class="col53">
+        <col class="col54">
+        <col class="col55">
+        </colgroup><tbody>
+          <tr class="row0">
+            <td class="column0 style0 s">Position</td>
+            <td class="column1 style0 n">0</td>
+            <td class="column2 style0 n">1</td>
+            <td class="column3 style0 n">2</td>
+            <td class="column4 style0 n">3</td>
+            <td class="column5 style0 n">4</td>
+            <td class="column6 style0 n">5</td>
+            <td class="column7 style0 n">6</td>
+            <td class="column8 style0 n">7</td>
+            <td class="column9 style0 n">8</td>
+            <td class="column10 style0 n">9</td>
+            <td class="column11 style0 n">10</td>
+            <td class="column12 style0 n">11</td>
+            <td class="column13 style0 n">12</td>
+            <td class="column14 style0 n">13</td>
+            <td class="column15 style0 n">14</td>
+            <td class="column16 style0 n">15</td>
+            <td class="column17 style0 n">16</td>
+            <td class="column18 style0 n">17</td>
+            <td class="column19 style0 n">18</td>
+            <td class="column20 style0 n">19</td>
+            <td class="column21 style0 n">20</td>
+            <td class="column22 style0 n">21</td>
+            <td class="column23 style0 n">22</td>
+            <td class="column24 style0 n">23</td>
+            <td class="column25 style0 n">24</td>
+            <td class="column26 style0 n">25</td>
+            <td class="column27 style0 n">26</td>
+            <td class="column28 style0 n">27</td>
+            <td class="column29 style0 n">28</td>
+            <td class="column30 style0 n">29</td>
+            <td class="column31 style0 n">30</td>
+            <td class="column32 style0 n">31</td>
+            <td class="column33 style0 n">32</td>
+            <td class="column34 style0 n">33</td>
+            <td class="column35 style0 n">34</td>
+            <td class="column36 style0 n">35</td>
+            <td class="column37 style0 n">36</td>
+            <td class="column38 style0 n">37</td>
+            <td class="column39 style0 n">38</td>
+            <td class="column40 style0 n">39</td>
+            <td class="column41 style0 n">40</td>
+            <td class="column42 style0 n">41</td>
+            <td class="column43 style0 n">42</td>
+            <td class="column44 style0 n">43</td>
+            <td class="column45 style0 n">44</td>
+            <td class="column46 style0 n">45</td>
+            <td class="column47 style0 n">46</td>
+            <td class="column48 style0 n">47</td>
+            <td class="column49 style0 n">48</td>
+            <td class="column50 style0 n">49</td>
+            <td class="column51 style0 n">50</td>
+            <td class="column52 style0 n">51</td>
+            <td class="column53 style0 n">52</td>
+            <td class="column54 style0 n">53</td>
+            <td class="column55 style0 n">54</td>
+          </tr>
+          <tr class="row1">
+            <td class="column0 style0 s">Description</td>
+            <td class="column1 style1 s style1" colspan="3">Lashes</td>
+            <td class="column4 style1 s style1" colspan="5">Dots Back</td>
+            <td class="column9 style1 s style1" colspan="16">Ring</td>
+            <td class="column25 style1 s style1" colspan="7">Flora</td>
+            <td class="column32 style1 s style1" colspan="4">Dots Front</td>
+            <td class="column36 style1 s style1" colspan="20">Strip Handle</td>
+          </tr>
+          <tr class="row2">
+            <td class="column0 style0 s">Default Color</td>
+            <td class="column1 style1 s style1" colspan="24">Amber</td>
+            <td class="column25 style1 s style1" colspan="11">Blue</td>
+            <td class="column36 style1 s style1" colspan="20">Amber</td>
+          </tr>
+          <tr class="row3">
+            <td class="column0 style0 s">Default Brightness</td>
+            <td class="column1 style2 n style2" colspan="55">30%</td>
+          </tr>
+          <tr class="row4">
+            <td class="column0 style0 s">Low Battery Color</td>
+            <td class="column1 style1 s style1" colspan="8">Amber</td>
+            <td class="column9 style1 s style1" colspan="16">Red</td>
+            <td class="column25 style1 s style1" colspan="11">Blue</td>
+            <td class="column36 style1 s style1" colspan="20">Amber</td>
+          </tr>
+          <tr class="row5">
+            <td class="column0 style0 s">Low Battery Brightness</td>
+            <td class="column1 style2 n style2" colspan="8">10%</td>
+            <td class="column9 style2 n style2" colspan="16">40%</td>
+            <td class="column25 style2 n style2" colspan="31">10%</td>
+          </tr>
+          <tr class="row6">
+            <td class="column0 style0 s">Idle Color</td>
+            <td class="column1 style1 s style1" colspan="24">Amber</td>
+            <td class="column25 style1 s style1" colspan="11">Blue</td>
+            <td class="column36 style1 s style1" colspan="20">Amber</td>
+          </tr>
+          <tr class="row7">
+            <td class="column0 style0 s">Idle Brightness</td>
+            <td class="column1 style1 s style1" colspan="55">Breathe 1% to 25%</td>
+          </tr>
+          <tr class="row8">
+            <td class="column0 style0 s">Photo Menu Color</td>
+            <td class="column1 style1 s style1" colspan="35">White</td>
+            <td class="column36 style1 s style1" colspan="20">Amber</td>
+          </tr>
+          <tr class="row9">
+            <td class="column0 style0 s">Photo Menu Brightness</td>
+            <td class="column1 style2 s style2" colspan="35">toggle 0% or 100%</td>
+            <td class="column36 style2 n style2" colspan="20">30%</td>
+          </tr>
+        </tbody>
+    </table>
 
 
 
@@ -183,7 +430,7 @@ Placeholder for menu items and features
 - [x] Add Readme
 - [x] Add back to top links
 - [x] Add Installation instructions
-- [ ] Add Arduino Firmware
+- [WIP] Add Arduino Firmware
 - [ ] Add Menu Images in Usage Section
 - [ ] Film Demo and take pretty photos
 
