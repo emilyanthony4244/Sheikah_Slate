@@ -210,7 +210,7 @@ An example config file was used as a base and modified. This was renamed to shei
   // Select the RA8875 display resolution:
   // - RA8875_480x272 = 480x272 (4.3" display)
   // - RA8875_800x480 = 800x480 (5" and 7" displays)
-  #define DRV_DISP_ADAGFX_RA8875_INIT RA8875_800x480 </code>
+  #define DRV_DISP_ADAGFX_RA8875_INIT RA8875_800x480 
 
   // -----------------------------------------------------------------------------
   // SECTION 2: Pinout
@@ -219,6 +219,7 @@ An example config file was used as a base and modified. This was renamed to shei
   // For shields, the following pinouts are typically hardcoded
   #define ADAGFX_PIN_CS       25    // Display chip select //changed from 10 default
   #define ADAGFX_PIN_RST      20     // Display Reset //changed from 5 default
+</code>
 
 Change Section 2 Pinout:
 <code>
