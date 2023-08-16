@@ -1,4 +1,7 @@
-// screen functions
+
+ // screen functions
+
+
 
 void bmpDraw(const char *filename, int x, int y) {
   File     bmpFile;
@@ -17,12 +20,14 @@ void bmpDraw(const char *filename, int x, int y) {
   uint8_t  lcdidx = 0;
   boolean  first = true;
 
-
   if((x >= tft.width()) || (y >= tft.height())) return;
 
   Serial.println();
-  Serial.print(F("Loading image '"));   Serial.print(filename);   Serial.println('\'');
+  Serial.print(F("Loading image '"));
+  Serial.print(filename);
+  Serial.println('\'');
 
+  
   // Open requested file on SD card
   if ((bmpFile = SD.open(filename)) == false) {
     Serial.println(F("File not found"));
@@ -130,6 +135,10 @@ void bmpDraw(const char *filename, int x, int y) {
   if(!goodBmp) Serial.println(F("BMP format not recognized."));
 
 }
+
+// These read 16- and 32-bit types from the SD card file.
+// BMP data is stored little-endian, Arduino is little-endian too.
+// May need to reverse subscript order if porting elsewhere.
 
 uint16_t read16(File f) {
   uint16_t result;
