@@ -44,28 +44,14 @@
 // ------------------------------------------------
 //<Resources !Start!>
 #define IMG_BKGND                 "/4k_botw_sheikah_slate_by_si7vervvolf_dbxczga-fullview.bmp"
-#define IMG_CAMBUTTON             "/cambutton.bmp"
-#define IMG_CAMBUTTON_SEL         "/cambutton.bmp"
-#define IMG_LOCKBUTTON            "/lockbutton.bmp"
-#define IMG_LOCKBUTTON_SEL        "/lockbutton.bmp"
-#define IMG_MAGBUTTON             "/magbutton.bmp"
-#define IMG_MAGBUTTON_SEL         "/magbutton.bmp"
-#define IMG_MAPBUTTON             "/mapbutton.bmp"
-#define IMG_MAPBUTTON_SEL         "/mapbutton.bmp"
-#define IMG_SENSORBUTTON          "/sensorbutton.bmp"
-#define IMG_SENSORBUTTON_SEL      "/sensorbutton.bmp"
-#define IMG_TUNESBUTTON           "/tunesbutton.bmp"
-#define IMG_TUNESBUTTON_SEL       "/tunesbutton.bmp"
 //<Resources !End!>
 
 // ------------------------------------------------
 // Enumerations for pages, elements, fonts, images
 // ------------------------------------------------
 //<Enum !Start!>
-enum {E_PG_BASE,E_MAIN,E_CAM_CONTROL};
-enum {E_ELEM_IMAGEBTN2,E_ELEM_IMAGEBTN3,E_ELEM_IMAGEBTN4
-      ,E_ELEM_IMAGEBTN5,E_ELEM_IMAGEBTN6,E_ELEM_IMAGEBTN7
-      ,E_ELEM_IMAGEBTN8,E_ELEM_TEXT1};
+enum {E_PG_BASE,E_PG_MAIN,E_PG2};
+enum {E_ELEM_TEXT1};
 // Must use separate enum for fonts with MAX_FONT at end to use gslc_FontSet.
 enum {E_BUILTIN5X8,E_DOSIS_BOLD8,MAX_FONT};
 //<Enum !End!>
@@ -83,11 +69,11 @@ enum {E_BUILTIN5X8,E_DOSIS_BOLD8,MAX_FONT};
 #define MAX_ELEM_PG_BASE 1 // # Elems total on page
 #define MAX_ELEM_PG_BASE_RAM MAX_ELEM_PG_BASE // # Elems in RAM
 
-#define MAX_ELEM_MAIN 6 // # Elems total on page
-#define MAX_ELEM_MAIN_RAM MAX_ELEM_MAIN // # Elems in RAM
+#define MAX_ELEM_PG_MAIN 0 // # Elems total on page
+#define MAX_ELEM_PG_MAIN_RAM MAX_ELEM_PG_MAIN // # Elems in RAM
 
-#define MAX_ELEM_CAM_CONTROL 1 // # Elems total on page
-#define MAX_ELEM_CAM_CONTROL_RAM MAX_ELEM_CAM_CONTROL // # Elems in RAM
+#define MAX_ELEM_PG2 0 // # Elems total on page
+#define MAX_ELEM_PG2_RAM MAX_ELEM_PG2 // # Elems in RAM
 //<ElementDefines !End!>
 
 // ------------------------------------------------
@@ -101,10 +87,10 @@ gslc_tsPage                     m_asPage[MAX_PAGE];
 //<GUI_Extra_Elements !Start!>
 gslc_tsElem                     m_asBasePage1Elem[MAX_ELEM_PG_BASE_RAM];
 gslc_tsElemRef                  m_asBasePage1ElemRef[MAX_ELEM_PG_BASE];
-gslc_tsElem                     m_asPage1Elem[MAX_ELEM_MAIN_RAM];
-gslc_tsElemRef                  m_asPage1ElemRef[MAX_ELEM_MAIN];
-gslc_tsElem                     m_asPage2Elem[MAX_ELEM_CAM_CONTROL_RAM];
-gslc_tsElemRef                  m_asPage2ElemRef[MAX_ELEM_CAM_CONTROL];
+gslc_tsElem                     m_asPage1Elem[MAX_ELEM_PG_MAIN_RAM];
+gslc_tsElemRef                  m_asPage1ElemRef[MAX_ELEM_PG_MAIN];
+gslc_tsElem                     m_asPage2Elem[MAX_ELEM_PG2_RAM];
+gslc_tsElemRef                  m_asPage2ElemRef[MAX_ELEM_PG2];
 
 #define MAX_STR                 100
 
@@ -152,8 +138,8 @@ void InitGUIslice_gen()
 
 //<InitGUI !Start!>
   gslc_PageAdd(&m_gui,E_PG_BASE,m_asBasePage1Elem,MAX_ELEM_PG_BASE_RAM,m_asBasePage1ElemRef,MAX_ELEM_PG_BASE);
-  gslc_PageAdd(&m_gui,E_MAIN,m_asPage1Elem,MAX_ELEM_MAIN_RAM,m_asPage1ElemRef,MAX_ELEM_MAIN);
-  gslc_PageAdd(&m_gui,E_CAM_CONTROL,m_asPage2Elem,MAX_ELEM_CAM_CONTROL_RAM,m_asPage2ElemRef,MAX_ELEM_CAM_CONTROL);
+  gslc_PageAdd(&m_gui,E_PG_MAIN,m_asPage1Elem,MAX_ELEM_PG_MAIN_RAM,m_asPage1ElemRef,MAX_ELEM_PG_MAIN);
+  gslc_PageAdd(&m_gui,E_PG2,m_asPage2Elem,MAX_ELEM_PG2_RAM,m_asPage2ElemRef,MAX_ELEM_PG2);
 
   // Now mark E_PG_BASE as a "base" page which means that it's elements
   // are always visible. This is useful for common page elements.
@@ -162,7 +148,7 @@ void InitGUIslice_gen()
 
   // NOTE: The current page defaults to the first page added. Here we explicitly
   //       ensure that the main page is the correct page no matter the add order.
-  gslc_SetPageCur(&m_gui,E_MAIN);
+  gslc_SetPageCur(&m_gui,E_PG_MAIN);
   
   // Set Background to an image
   gslc_SetBkgndImage(&m_gui,gslc_GetImageFromSD((const char*)IMG_BKGND,GSLC_IMGREF_FMT_BMP24));
@@ -177,54 +163,12 @@ void InitGUIslice_gen()
   gslc_ElemSetFillEn(&m_gui,pElemRef,false);
 
   // -----------------------------------
-  // PAGE: E_MAIN
+  // PAGE: E_PG_MAIN
   
-  
-  // Create E_ELEM_IMAGEBTN2 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN2,E_MAIN,(gslc_tsRect){62,186,96,96},
-          gslc_GetImageFromSD((const char*)IMG_CAMBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_CAMBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
-  
-  // Create E_ELEM_IMAGEBTN3 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN3,E_MAIN,(gslc_tsRect){178,186,96,96},
-          gslc_GetImageFromSD((const char*)IMG_LOCKBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_LOCKBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
-  
-  // Create E_ELEM_IMAGEBTN4 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN4,E_MAIN,(gslc_tsRect){294,186,96,96},
-          gslc_GetImageFromSD((const char*)IMG_MAGBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_MAGBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
-  
-  // Create E_ELEM_IMAGEBTN5 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN5,E_MAIN,(gslc_tsRect){410,186,96,96},
-          gslc_GetImageFromSD((const char*)IMG_MAPBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_MAPBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
-  
-  // Create E_ELEM_IMAGEBTN6 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN6,E_MAIN,(gslc_tsRect){526,186,96,96},
-          gslc_GetImageFromSD((const char*)IMG_SENSORBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_SENSORBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
-  
-  // Create E_ELEM_IMAGEBTN7 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN7,E_MAIN,(gslc_tsRect){642,186,96,96},
-          gslc_GetImageFromSD((const char*)IMG_TUNESBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_TUNESBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
 
   // -----------------------------------
-  // PAGE: E_CAM_CONTROL
+  // PAGE: E_PG2
   
-  
-  // Create E_ELEM_IMAGEBTN8 button with image label
-  pElemRef = gslc_ElemCreateBtnImg(&m_gui,E_ELEM_IMAGEBTN8,E_CAM_CONTROL,(gslc_tsRect){240,190,96,96},
-          gslc_GetImageFromSD((const char*)IMG_CAMBUTTON,GSLC_IMGREF_FMT_BMP24),
-          gslc_GetImageFromSD((const char*)IMG_CAMBUTTON_SEL,GSLC_IMGREF_FMT_BMP24),
-          &CbBtnCommon);
 //<InitGUI !End!>
 
 //<Startup !Start!>

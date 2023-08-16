@@ -29,41 +29,8 @@ static int16_t DebugOut(char ch) { if (ch == (char)'\n') Serial.println(""); els
 // ------------------------------------------------
 // Callback Methods
 // ------------------------------------------------
-// Common Button callback
-bool CbBtnCommon(void* pvGui,void *pvElemRef,gslc_teTouch eTouch,int16_t nX,int16_t nY)
-{
-  // Typecast the parameters to match the GUI and element types
-  gslc_tsGui*     pGui     = (gslc_tsGui*)(pvGui);
-  gslc_tsElemRef* pElemRef = (gslc_tsElemRef*)(pvElemRef);
-  gslc_tsElem*    pElem    = gslc_GetElemFromRef(pGui,pElemRef);
-
-  if ( eTouch == GSLC_TOUCH_UP_IN ) {
-    // From the element's ID we can determine which button was pressed.
-    switch (pElem->nId) {
-//<Button Enums !Start!>
-      case E_ELEM_IMAGEBTN2:
-        gslc_SetPageCur(&m_gui, E_CAM_CONTROL);
-        break;
-      case E_ELEM_IMAGEBTN3:
-        gslc_SetPageCur(&m_gui, E_PG_BASE);
-        break;
-      case E_ELEM_IMAGEBTN4:
-        break;
-      case E_ELEM_IMAGEBTN5:
-        break;
-      case E_ELEM_IMAGEBTN6:
-        break;
-      case E_ELEM_IMAGEBTN7:
-        break;
-      case E_ELEM_IMAGEBTN8:
-        break;
-//<Button Enums !End!>
-      default:
-        break;
-    }
-  }
-  return true;
-}
+//<Button Callback !Start!>
+//<Button Callback !End!>
 //<Checkbox Callback !Start!>
 //<Checkbox Callback !End!>
 //<Keypad Callback !Start!>

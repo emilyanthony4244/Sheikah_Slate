@@ -57,6 +57,7 @@ bool CbBtnCommon(void* pvGui,void *pvElemRef,gslc_teTouch eTouch,int16_t nX,int1
         break;
       case E_ELEM_IMAGEBTN8:
         break;
+
 //<Button Enums !End!>
       default:
         break;
