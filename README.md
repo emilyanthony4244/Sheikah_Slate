@@ -220,7 +220,7 @@ An example config file was used as a base and modified. This was renamed to shei
 Unfortunately the RA8875 is not compatible with TFT_eSPI from @Bodmer, so the AdafruitGFX and RA8875 libraries must be used.
 The following items were modified from the base config:
 
-<code>  #define ADAGFX_PIN_CS       25    // Display chip select changed from 10 to 25
+<code>#define ADAGFX_PIN_CS       25    // Display chip select changed from 10 to 25
   #define ADAGFX_PIN_RST      20     // Display Reset changed from 5 to 27
 #define ADAGFX_PIN_SDCS     27    //SD CS</code>
 
@@ -228,7 +228,7 @@ For development, <code>#define DEBUG_ERR</code> was changed to 2. For release th
 
 All optional features toggled to 1 for development; likely won’t need GPIO input in the end but who knows.
 
-<code>  #define GSLC_FEATURE_COMPOUND       1   // Compound elements (eg. XSelNum)
+<code>#define GSLC_FEATURE_COMPOUND       1   // Compound elements (eg. XSelNum)
   #define GSLC_FEATURE_XTEXTBOX_EMBED 1   // XTextbox control with embedded color
   #define GSLC_FEATURE_INPUT          1   // Keyboard / GPIO input control</code>
 
@@ -238,15 +238,15 @@ SD enabled for obvious reasons:
 
 Pixel Buffer increased because I’m impatient
 
-<code>  #define GSLC_SD_BUFFPIXEL   85</code>
+<code>#define GSLC_SD_BUFFPIXEL   85</code>
 
-<i>A note: this pixel buffer is by default 8 bit. Even though the ESP32 can handle it, the display will not work if you increase this past 85 due to the way the SD library reads files. I may write a buffer for the buffer to send to the screen in larger chunks. TBD</i>
+<i>A note: this pixel buffer is by default 8 bit. Even though the ESP32 can handle it, the display will not work if you increase this past 85 due to the way the SD library and GFX library reads files to the RA8875 LCD buffer. I may write a buffer for the buffer to send to the screen in larger chunks and am investigating how to speed this whole thing up. I am really concerned about the rate I can write images to the screen.</i>
 
 ### Camera
 
 The Sheikah Slate features the Adafruit Miniature TTL Serial JPG camera. The camera captures 640x480 images and saves them to the SD in jpg format using the Adafruit VC0706 Camera library. The file names are formatted “IMAGExx.JPG” from 00 to 99.
 
-When the Camera menu is selected, the 
+When the Camera menu is selected, the user has the option to turn “flash” on and off. “Flash” is just lighting the NeoPixels on the back 100% brightness full white. This is just to help in low light; the VC0706 has auto brightness so there are no other settings in this menu.
 
 Using the TJpg_Decoder library (also from @Bodmer), the jpgs are processed and resaved as 24bit BMP files and then displayed on the TFT. Jpeg files must be in 24bit format; luckily, the Adafruit TTL Serial Camera takes 24bit depth jpg images so it’s an easy conversion.
 
