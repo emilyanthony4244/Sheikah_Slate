@@ -220,9 +220,13 @@ The Sheikah Slate does not and will never support streamed video to the display.
 
 TODO
 
+### Add features
+
+There are 5 GPIO pins broken out in case you ever want to add something. Be aware that GPIO34, 36, and 39 are input only.
+
 ### NeoPixels
 
-Finally, the slate has 11 button NeoPixels, a 16 pixel Ring, a Flora, and a 20 LED strip all from Adafruit. They’re all strung together and addressed on A0/IO26. The order of the NeoPixels is as follows:
+Finally, the slate has 11 button NeoPixels, a 16 pixel Ring, a Flora, and a 20 LED strip all from Adafruit. They’re all strung together and addressed on GPIO26. The order of the NeoPixels is as follows:
 
 <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
         <colgroup><col class="col0">
