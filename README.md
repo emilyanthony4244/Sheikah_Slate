@@ -154,7 +154,8 @@ FDM 3D printer capable of printing solid PLA/ABS/PETG/etc AND an SLA printer cap
 
 Money to spend at www.HUBS.com or www.shapeways.com to outsource prints.
 
-See the BOM in root directory for parts information. 3D print costs are estimates and will be higher if you outsource this print. PCBs can be ordered at various online vendors such as PCBway.com. It’s recommended to shop around to get your best price. PCBway has a minimum order of 5 boards per order; I have extras and can sell you one for $12 + shipping.
+See the BOM in root directory for parts information. 3D print costs are estimates and will be higher if you outsource this print. PCBs can be ordered at various online vendors such as PCBway.com. I have extras and can sell you one for $12 + shipping. Otherwise, you can order from PCBway where I get a cut:
+<a href="https://www.pcbway.com/project/shareproject/Sheikah_Slate_for_Cosplay_951a0c22.html"><img src="https://www.pcbway.com/project/img/images/frompcbway-1220.png" alt="PCB from PCBWay" /></a>
 
 ### Installation
 
@@ -185,7 +186,7 @@ Unfortunately the RA8875 is not compatible with TFT_eSPI from @Bodmer, so the Ad
 The following items were modified from the base config:
 
 <code>#define ADAGFX_PIN_CS       27    // Display chip select changed from 10 to 25
-  #define ADAGFX_PIN_RST      33     // Display Reset is changed from 5 to 33
+  #define ADAGFX_PIN_RST      23     // Display Reset is changed from 5 to 23
 #define ADAGFX_PIN_SDCS     12    //SD CS</code>
 
 For development, <code>#define DEBUG_ERR</code> was changed to 2. For release this will toggle to 0.
