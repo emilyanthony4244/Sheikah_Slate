@@ -155,6 +155,8 @@ FDM 3D printer capable of printing solid PLA/ABS/PETG/etc AND an SLA printer cap
 Money to spend at www.HUBS.com or www.shapeways.com to outsource prints.
 
 See the BOM in root directory for parts information. 3D print costs are estimates and will be higher if you outsource this print. PCBs can be ordered at various online vendors such as PCBway.com. I have extras and can sell you one for $12 + shipping. Otherwise, you can order from PCBway where I get a cut:
+
+
 <a href="https://www.pcbway.com/project/shareproject/Sheikah_Slate_for_Cosplay_951a0c22.html"><img src="https://www.pcbway.com/project/img/images/frompcbway-1220.png" alt="PCB from PCBWay" /></a>
 
 ### Installation
